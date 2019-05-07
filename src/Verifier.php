@@ -92,9 +92,10 @@ final class Verifier implements Domain\Verifier
             throw new InvalidToken($token, 'The claim "iat" is missing.');
         }
 
-        if ($token->getClaim('iat') > time()) {
-            throw new IssuedInTheFuture($token);
-        }
+        // Disable it for now because times may not much on the client and server
+        // if ($token->getClaim('iat') > time()) {
+        //     throw new IssuedInTheFuture($token);
+        // }
     }
 
     private function verifyIssuer(Token $token)
