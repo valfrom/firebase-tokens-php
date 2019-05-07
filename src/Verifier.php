@@ -80,9 +80,10 @@ final class Verifier implements Domain\Verifier
             throw new InvalidToken($token, 'The claim "auth_time" is missing.');
         }
 
-        if ($token->getClaim('auth_time') > time()) {
-            throw new InvalidToken($token, "The user's authentication time must be in the past");
-        }
+        // Disable it for now because times may not much on the client and server
+        // if ($token->getClaim('auth_time') > time()) {
+        //     throw new InvalidToken($token, "The user's authentication time must be in the past");
+        // }
     }
 
     private function verifyIssuedAt(Token $token)
